@@ -1,0 +1,252 @@
+.contact {
+  padding-top: 80px;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.contact-header {
+  max-width: 800px;
+  margin: 4rem auto 3rem;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.contact-header h1 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+}
+
+.contact-header p {
+  font-size: 0.95rem;
+  color: #999;
+  letter-spacing: 0.3px;
+  line-height: 1.6;
+}
+
+.contact-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+/* Form Section */
+.contact-form-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.3px;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.9rem 1rem;
+  border: 1px solid #ddd;
+  background-color: #fafafa;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #1a1a1a;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  background-color: white;
+  border-color: #1a1a1a;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #bbb;
+}
+
+.submit-btn {
+  padding: 1rem 2rem;
+  background-color: #1a1a1a;
+  color: white;
+  border: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+  background-color: #333;
+}
+
+.success-message {
+  color: #4caf50;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Info Section */
+.contact-info-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.contact-info h3 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.contact-info > p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.contact-info h4 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+}
+
+/* Social Section */
+.social-section {
+  padding: 1.5rem;
+  background-color: #fafafa;
+  border-radius: 2px;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.social-link-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1rem;
+  background-color: white;
+  border: 1px solid #eee;
+  text-decoration: none;
+  color: #1a1a1a;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+  font-size: 0.9rem;
+}
+
+.social-link-item:hover {
+  background-color: #1a1a1a;
+  color: white;
+  border-color: #1a1a1a;
+}
+
+.social-icon {
+  font-size: 1.2rem;
+}
+
+/* Email Section */
+.email-section {
+  padding: 1.5rem;
+  background-color: #fafafa;
+  border-radius: 2px;
+}
+
+.email-link {
+  display: inline-block;
+  color: #1a1a1a;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 0.8rem 1rem;
+  background-color: white;
+  border: 1px solid #eee;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+  letter-spacing: 0.3px;
+}
+
+.email-link:hover {
+  background-color: #1a1a1a;
+  color: white;
+  border-color: #1a1a1a;
+}
+
+/* Info Text */
+.info-text {
+  padding: 1.5rem;
+  background-color: #fafafa;
+  border-radius: 2px;
+}
+
+.info-text p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .contact-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1.5rem 3rem;
+  }
+
+  .social-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .social-link-item {
+    flex: 1;
+    min-width: 150px;
+    justify-content: center;
+  }
+}
