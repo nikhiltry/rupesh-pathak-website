@@ -175,7 +175,7 @@ export default function Home() {
             <a href="https://www.linkedin.com/in/pathak-rupesh/" target="_blank" rel="noopener noreferrer" className="social-link">
               LinkedIn
             </a>
-            <a href="mailto:contact@rupeshpathak.com" className="social-link">
+            <a href="mailto:pathakrupesh@zohomail.in" className="social-link">
               Email
             </a>
           </div>
