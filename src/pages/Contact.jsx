@@ -10,6 +10,8 @@ export default function Contact() {
   })
 
   const [submitted, setSubmitted] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
+  const [isSending, setIsSending] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -19,13 +21,38 @@ export default function Contact() {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // In a real app, you'd send this to a backend
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
-    setFormData({ name: '', email: '', subject: '', message: '' })
-    setTimeout(() => setSubmitted(false), 3000)
+    setErrorMessage('')
+    setIsSending(true)
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}))
+        throw new Error(data.error || 'Unable to send your message right now.')
+      }
+
+      setSubmitted(true)
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      })
+      setTimeout(() => setSubmitted(false), 3000)
+    } catch (error) {
+      setErrorMessage(error.message || 'Unable to send your message right now. Please try again later.')
+      return
+    } finally {
+      setIsSending(false)
+    }
   }
 
   return (
@@ -90,8 +117,11 @@ export default function Contact() {
               ></textarea>
             </div>
 
-            <button type="submit" className="submit-btn">Send Message</button>
-            {submitted && <p className="success-message">Thank you! I'll get back to you soon.</p>}
+            <button type="submit" className="submit-btn" disabled={isSending}>
+              {isSending ? 'Sending...' : 'Send Message'}
+            </button>
+            {submitted && <p className="success-message">Your message has been sent to Rupesh, and an acknowledgment email has also been sent to you.</p>}
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
           </form>
         </div>
 
@@ -135,8 +165,8 @@ export default function Contact() {
 
             <div className="email-section">
               <h4>Email</h4>
-              <a href="mailto:contact@rupeshpathak.com" className="email-link">
-                contact@rupeshpathak.com
+              <a href="mailto:pathakrupesh@zohomail.in" className="email-link">
+                pathakrupesh@zohomail.in
               </a>
             </div>
 
