@@ -3,16 +3,16 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(17, 13, 10, 0.18);
+  backdrop-filter: blur(14px);
   z-index: 1000;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(255, 244, 229, 0.12);
 }
 
 .nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.5rem 2rem;
+  width: 100%;
+  margin: 0;
+  padding: 1.5rem min(7vw, 6rem);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,15 +21,16 @@
 .nav-logo {
   font-size: 1.1rem;
   font-weight: 500;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
 }
 
 .logo-btn {
   background: none;
   border: none;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
-  color: #1a1a1a;
+  color: #fff7ed;
   cursor: pointer;
   padding: 0;
   transition: opacity 0.3s ease;
@@ -42,30 +43,33 @@
 .nav-menu {
   display: flex;
   list-style: none;
-  gap: 3rem;
+  gap: 2rem;
   margin: 0;
   padding: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .nav-link {
   background: none;
   border: none;
-  font-size: 0.95rem;
-  color: #666;
+  font-size: 0.82rem;
+  color: rgba(255, 247, 237, 0.72);
   cursor: pointer;
   padding: 0.5rem 0;
   transition: all 0.3s ease;
   font-weight: 400;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.16rem;
+  text-transform: uppercase;
   position: relative;
 }
 
 .nav-link:hover {
-  color: #1a1a1a;
+  color: #fff7ed;
 }
 
 .nav-link.active {
-  color: #1a1a1a;
+  color: #fff7ed;
   font-weight: 500;
 }
 
@@ -76,20 +80,23 @@
   left: 0;
   right: 0;
   height: 2px;
-  background-color: #1a1a1a;
+  background-color: #f1debd;
 }
 
 @media (max-width: 768px) {
   .nav-container {
-    padding: 1rem 1.5rem;
+    padding: 1rem 1.4rem;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
   }
 
   .nav-menu {
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .nav-link {
-    font-size: 0.9rem;
+    font-size: 0.76rem;
   }
 
   .logo-btn {

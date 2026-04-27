@@ -83,19 +83,28 @@ export default function Journals() {
   return (
     <div className="journals">
       <div className="journals-header">
-        <h1>Journals & Reflections</h1>
-        <p>Thoughts from the trail, observations from the world</p>
+        <div className="journals-header-text">
+          <p className="section-label">Journal</p>
+          <h1>Long-form reflections from the trail and beyond.</h1>
+          <p>Essays and notes shaped by altitude, movement, solitude, and the practice of paying close attention.</p>
+        </div>
+        <div className="journals-header-note">
+          These entries now share the same home-page language: warmer tones, spacious typography, and a more editorial reading experience.
+        </div>
       </div>
 
       <div className="journals-container">
         {journals.map((journal) => (
           <article key={journal.id} className="journal-article">
-            <div className="article-meta">
-              <span className="article-date">{journal.date}</span>
-              <span className="article-category">{journal.category}</span>
+            <div className="article-sidebar">
+              <div className="article-meta">
+                <span className="article-date">{journal.date}</span>
+                <span className="article-category">{journal.category}</span>
+              </div>
+              <p className="article-excerpt">{journal.excerpt}</p>
             </div>
-            <h2 className="article-title">{journal.title}</h2>
             <div className="article-content">
+              <h2 className="article-title">{journal.title}</h2>
               {journal.content.split('\n\n').map((paragraph, idx) => (
                 <p key={idx}>{paragraph}</p>
               ))}

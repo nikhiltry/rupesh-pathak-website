@@ -1,39 +1,47 @@
 import { useState } from 'react'
 import './Home.css'
 import ImageLightbox from '../components/ImageLightbox'
+import heroImage from '../../images/backgraund-image.jpg'
 
-const heroImage = 'https://lh3.googleusercontent.com/sitesv/AA5AbUAmaT2D2HmcN9jc7oT0_TRYCu7Hx_Oi7emN6MES5gKsLS18zcgsKGn1ayFHExvMpR7eLzGnMpH4r8TRKAGwhXZgU6OaTpIHsYbWVz_D0kXzfV080Xb0SXsxCNGuuD9RfAkZsmITOOiEnoSUAhEscD9APr-0_TZfIp0gTP6W6IFom8LsqOLHbMH7=w16383'
+const expeditionHighlights = [
+  {
+    id: 1,
+    label: 'Field Notes',
+    title: 'Life Between Streets and Summits',
+    description:
+      'A personal archive of mountain crossings, city stories, and the quieter lessons gathered in between.'
+  },
+  {
+    id: 2,
+    label: 'Expeditions',
+    title: 'Journeys Built on Endurance',
+    description:
+      'Long walks, remote camps, alpine routes, and the discipline of moving slowly enough to notice everything.'
+  },
+  {
+    id: 3,
+    label: 'Photography',
+    title: 'Images With a Sense of Place',
+    description:
+      'Frames shaped by weather, terrain, and human presence rather than polished travel cliches.'
+  }
+]
 
 const featuredPhotos = [
   {
     id: 1,
-    src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
-    alt: 'Mountain landscape'
+    src: heroImage,
+    alt: 'Expedition ridge at golden hour'
   },
   {
     id: 2,
-    src: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=600&fit=crop',
-    alt: 'Mountain trail'
+    src: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&h=1600&fit=crop',
+    alt: 'Snow-covered mountain peaks'
   },
   {
     id: 3,
-    src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
-    alt: 'Peak exploration'
-  },
-  {
-    id: 4,
-    src: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=600&fit=crop',
-    alt: 'Journey moments'
-  },
-  {
-    id: 5,
-    src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
-    alt: 'Exploration'
-  },
-  {
-    id: 6,
-    src: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=600&fit=crop',
-    alt: 'Wilderness'
+    src: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&h=1600&fit=crop',
+    alt: 'Traveler on a remote trail'
   }
 ]
 
@@ -41,109 +49,159 @@ const journalPreviews = [
   {
     id: 1,
     title: 'Lessons from the Mountains',
-    excerpt: 'Standing at 4000 meters, surrounded by silence and stone, I learned that the most profound discoveries often come when we step away from the noise. Mountains teach patience, humility, and the art of presence.',
+    excerpt:
+      'At altitude, ambition gets quieter and awareness gets sharper. The mountain does not reward speed nearly as much as attention.',
     date: 'April 15, 2026',
     category: 'Reflection'
   },
   {
     id: 2,
     title: 'From Streets to Summits',
-    excerpt: 'My journey from street photography to mountaineering wasn\'t a departure—it was a continuation. Both are about observation, about seeing the world differently, about documenting what moves us.',
+    excerpt:
+      'Street photography taught me to anticipate fleeting moments. Mountaineering taught me to wait for them.',
     date: 'March 28, 2026',
     category: 'Journey'
   },
   {
     id: 3,
     title: 'The Art of Slow Travel',
-    excerpt: 'In a world obsessed with speed, I discovered that the most meaningful experiences come from slowing down. Walking through valleys, sitting with locals, watching sunsets—these moments define a journey.',
+    excerpt:
+      'The most memorable routes are rarely the fastest ones. They are the ones that leave room for weather, detours, and conversation.',
     date: 'March 10, 2026',
     category: 'Travel'
   }
 ]
 
+const collaborationAreas = [
+  'Expedition storytelling',
+  'Photography projects',
+  'Brand collaborations',
+  'Travel features',
+  'Speaking engagements',
+  'Field documentation'
+]
+
 export default function Home() {
   const [selectedPhoto, setSelectedPhoto] = useState(null)
 
+  const scrollToStory = () => {
+    document.getElementById('story-section')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <div className="home">
-      {/* Hero Section */}
       <section className="hero-section" style={{ backgroundImage: `url(${heroImage})` }}>
         <div className="hero-overlay"></div>
         <div className="hero-content">
-          <h1 className="hero-title">Rupesh Pathak</h1>
-          <p className="hero-subtitle">Mountaineer | Explorer</p>
-          <p className="hero-description">Documenting journeys, moments, and meaning</p>
-          <button className="hero-cta" onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}>
-            Explore My Journey
-          </button>
+          <p className="hero-kicker">Rupesh Pathak</p>
+          <h1 className="hero-title">Mountaineer, photographer, and explorer documenting life in motion.</h1>
+          <p className="hero-description">
+            A cinematic journal of expeditions, field notes, and visual storytelling shaped by distance, weather, and lived experience.
+          </p>
+          <div className="hero-actions">
+            <button className="hero-cta primary" onClick={scrollToStory}>
+              Explore the story
+            </button>
+            <button className="hero-cta secondary" onClick={() => setSelectedPhoto(featuredPhotos[0])}>
+              View signature image
+            </button>
+          </div>
         </div>
       </section>
 
-      {/* Intro Section */}
-      <section className="intro-section">
-        <div className="intro-content">
-          <h2>About This Journey</h2>
-          <p>
-            I am an explorer at heart—someone who finds meaning in movement, discovery, and the spaces between destinations. Through mountains, travel, and photography, I document what I see, where I go, and what I learn. This isn't a portfolio or a personal brand. It's a living journal of observation, growth, and the quiet moments that shape us.
-          </p>
-          <p>
-            Every peak climbed, every trail walked, every photograph taken is a conversation between myself and the world. I invite you to witness these moments—not as a spectator, but as a fellow traveler in the human experience.
-          </p>
+      <section className="story-section" id="story-section">
+        <div className="story-intro">
+          <p className="section-label">About</p>
+          <h2 className="section-title">A life shaped by observation, endurance, and place.</h2>
         </div>
-      </section>
-
-      {/* Journey Section */}
-      <section className="journey-section">
-        <div className="journey-content">
-          <h2>From Streets to Summits</h2>
-          <div className="journey-narrative">
-            <div className="journey-phase">
-              <h3>The Beginning: Street Photography</h3>
-              <p>
-                It started in the streets of New Delhi. Armed with a camera, I observed urban life—the hustle, the stories, the fleeting moments that define a city. Street photography taught me to see differently, to find beauty in the ordinary, and to understand that every person has a story.
-              </p>
+        <div className="story-grid">
+          <div className="story-copy">
+            <p>
+              I move between mountains, roads, and cities with the same instinct: to pay attention. What began with street photography evolved into a wider practice of exploration, where travel is not just movement, but a way of understanding landscape, people, and self.
+            </p>
+            <p>
+              This site is a home for those journeys. It gathers photographs, journal entries, and expedition fragments into one place so each route feels connected to the next.
+            </p>
+          </div>
+          <div className="story-facts">
+            <div className="story-stat">
+              <span className="story-stat-value">10+</span>
+              <span className="story-stat-label">Years building visual stories</span>
             </div>
-            <div className="journey-phase">
-              <h3>The Evolution: Mountains Call</h3>
-              <p>
-                Then came the mountains. What began as a weekend trek became a calling. I realized that the same curiosity that drove me through city streets could take me to higher places—literally and metaphorically. Mountains offered silence where cities offered noise, vastness where streets offered crowds.
-              </p>
+            <div className="story-stat">
+              <span className="story-stat-value">Mountains</span>
+              <span className="story-stat-label">A recurring classroom for resilience and humility</span>
             </div>
-            <div className="journey-phase">
-              <h3>The Integration: A Unified Vision</h3>
-              <p>
-                Today, I understand that these aren't separate paths. Street photography and mountaineering are both about observation, about documenting the human experience in different contexts. Both are about presence, patience, and the art of seeing what others miss.
-              </p>
+            <div className="story-stat">
+              <span className="story-stat-value">Field Work</span>
+              <span className="story-stat-label">Photography, writing, and observation combined</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Photos Section */}
-      <section className="featured-photos-section">
-        <div className="featured-photos-header">
-          <h2>Through My Lens</h2>
-          <p>A curated selection of moments from the mountains and beyond</p>
+      <section className="highlights-section">
+        <div className="section-heading">
+          <p className="section-label">Highlights</p>
+          <h2 className="section-title">Built like an explorer’s front page, not a generic portfolio.</h2>
         </div>
-        <div className="featured-photos-grid">
+        <div className="highlights-grid">
+          {expeditionHighlights.map((item) => (
+            <article key={item.id} className="highlight-card">
+              <p className="highlight-label">{item.label}</p>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="feature-band">
+        <div className="feature-band-image" style={{ backgroundImage: `url(${heroImage})` }}></div>
+        <div className="feature-band-content">
+          <p className="section-label">Featured Journey</p>
+          <h2 className="section-title">From everyday observation to remote landscapes.</h2>
+          <p>
+            The through-line in my work is simple: stay curious, go farther, and document honestly. Whether on a steep ascent or in a crowded street, the goal is the same: find the human story inside the terrain.
+          </p>
+          <a href="#" className="feature-link">
+            Read the latest journal
+          </a>
+        </div>
+      </section>
+
+      <section className="quote-section">
+        <p className="quote-mark">“</p>
+        <blockquote>
+          Exploration changes you less by giving answers and more by refining the questions you keep asking.
+        </blockquote>
+        <p className="quote-attribution">Rupesh Pathak</p>
+      </section>
+
+      <section className="gallery-section">
+        <div className="section-heading">
+          <p className="section-label">Photography</p>
+          <h2 className="section-title">Selected images from the trail.</h2>
+        </div>
+        <div className="featured-photos-grid editorial">
           {featuredPhotos.map((photo) => (
-            <div 
-              key={photo.id} 
-              className="photo-item"
-              onClick={() => setSelectedPhoto(photo)}
-            >
+            <div key={photo.id} className="photo-item" onClick={() => setSelectedPhoto(photo)}>
               <img src={photo.src} alt={photo.alt} />
-              <div className="photo-overlay"></div>
+              <div className="photo-overlay">
+                <span>Open image</span>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Journals Preview Section */}
       <section className="journals-preview-section">
-        <div className="journals-header">
-          <h2>Latest Reflections</h2>
-          <p>Thoughts from the trail</p>
+        <div className="section-heading split">
+          <div>
+            <p className="section-label">Journal</p>
+            <h2 className="section-title">Recent reflections from the road.</h2>
+          </div>
+          <p className="section-side-note">Writing that sits beside the imagery, not underneath it.</p>
         </div>
         <div className="journals-list">
           {journalPreviews.map((journal) => (
@@ -154,40 +212,48 @@ export default function Home() {
               </div>
               <h3 className="journal-title">{journal.title}</h3>
               <p className="journal-excerpt">{journal.excerpt}</p>
-              <a href="#" className="journal-read-more">Read more →</a>
+              <a href="#" className="journal-read-more">
+                Continue reading
+              </a>
             </article>
           ))}
         </div>
       </section>
 
-      {/* Contact/Social Section */}
       <section className="contact-preview-section">
-        <div className="contact-content">
-          <h2>Let's Connect</h2>
-          <p>Follow my journey across platforms or reach out directly</p>
-          <div className="social-links">
-            <a href="https://www.instagram.com/manual_eyes_/" target="_blank" rel="noopener noreferrer" className="social-link">
-              Instagram
-            </a>
-            <a href="https://x.com/_rupeshpathak_" target="_blank" rel="noopener noreferrer" className="social-link">
-              X (Twitter)
-            </a>
-            <a href="https://www.linkedin.com/in/pathak-rupesh/" target="_blank" rel="noopener noreferrer" className="social-link">
-              LinkedIn
-            </a>
-            <a href="mailto:pathakrupesh@zohomail.in" className="social-link">
-              Email
-            </a>
+        <div className="contact-shell">
+          <div className="contact-content">
+            <p className="section-label light">Collaborate</p>
+            <h2>Available for stories, campaigns, and expedition-led work.</h2>
+            <p className="contact-copy">
+              If you want the site to feel more like a modern explorer’s platform, this section carries the same energy as the reference: clear positioning, dark contrast, and direct calls to connect.
+            </p>
+            <div className="social-links">
+              <a href="https://www.instagram.com/manual_eyes_/" target="_blank" rel="noopener noreferrer" className="social-link">
+                Instagram
+              </a>
+              <a href="https://x.com/_rupeshpathak_" target="_blank" rel="noopener noreferrer" className="social-link">
+                X
+              </a>
+              <a href="https://www.linkedin.com/in/pathak-rupesh/" target="_blank" rel="noopener noreferrer" className="social-link">
+                LinkedIn
+              </a>
+              <a href="mailto:pathakrupesh@zohomail.in" className="social-link">
+                Email
+              </a>
+            </div>
+          </div>
+          <div className="collaboration-list">
+            {collaborationAreas.map((area) => (
+              <div key={area} className="collaboration-item">
+                {area}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {selectedPhoto && (
-        <ImageLightbox 
-          image={selectedPhoto} 
-          onClose={() => setSelectedPhoto(null)} 
-        />
-      )}
+      {selectedPhoto && <ImageLightbox image={selectedPhoto} onClose={() => setSelectedPhoto(null)} />}
     </div>
   )
 }
