@@ -125,7 +125,7 @@ export default function Home() {
           </div>
           <div className="story-facts">
             <div className="story-stat">
-              <span className="story-stat-value">10+</span>
+              <span className="story-stat-value">3+</span>
               <span className="story-stat-label">Years building visual stories</span>
             </div>
             <div className="story-stat">
